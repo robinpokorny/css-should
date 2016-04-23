@@ -1,0 +1,111 @@
+<pre class='metadata'>
+Title: CSS @should Rule
+Shortname: css-should-rule
+Level: 1
+Status: DREAM
+URL: http://robinpokorny.github.io/at-should
+Editor: Robin Pokorný, Wimdu, http://robinpokorny.com/
+Abstract: This specification defines the ''@should'' rule, which allows an author to define tests of semantics of the custom classnames vocabulary for documentation and testing.
+Repository: robinpokorny/at-should
+Ignored Terms: SyntaxError
+Warning: Not Ready
+</pre>
+
+Introduction {#intro}
+=====================
+
+The growth of a CSS code base and the consequent growth of custom vocabulary with defined semantics and other relationships brings extended demands to authors. The ''@should'' rule makes these relationships explicit, the information provided can be used as a base for documentation or as on input for automatic testing tools.
+
+The Syntax Proposal {#syntax}
+=============================================================
+
+To define a ''@should'' test, you choose an <<axis>> and its paramether.
+It's syntax is:
+
+	<pre>
+		<dfn>@should</dfn> = @should <<axis>> <<param>>? ;
+		<dfn>&lt;axis></dfn> = <<ident-token>>+
+		<dfn>&lt;param></dfn> = <<string>>
+	</pre>
+
+	<pre class='railroad'>
+		T: @should
+		OneOrMore:
+			N: <ident-token>
+		Optional:
+			N: <string>
+		T: ;
+	</pre>
+
+The ''@should'' rule is only valid inside of a style rule.
+Using it outside of a style rule, or inside any other rule,
+is invalid and causes the ''@should'' to be ignored.
+
+<div class="example">
+	Here's a valid example of ''@should'' usage:
+
+	<pre class="lang-css">
+		.foo {
+			@should match ".boo";
+			color: green;
+		}
+	</pre>
+
+	Here's several invalid example of ''@should'' usage:
+
+	<pre class="lang-css invalid">
+		@should match ".boo";
+
+		.foo {
+			color: blue;
+		}
+	</pre>
+
+	<pre class="lang-css invalid">
+		@keyframes foo {
+			from { color: red; }
+			to { color: blue; }
+			@should match ".boo";
+		}
+	</pre>
+</div>
+
+CSS style sheets are generally case-insensitive, and this is also the case for the "not" keyword and <<axis>>.
+
+In addition to conforming to the syntax, axis and paramether need to use axis type and param specification according to their respective specification in order to be considered conforming.
+
+<div class="example">
+	Only the first should rule is conforming in the example below because the "example" axis does not exist.
+
+	<pre class="lang-css">
+		@should match ".boo";
+		@should example "foo";
+	</pre>
+</div>
+
+Canonical name for an axis must be <<ident-token>>. If multiple tokens are present in the rule, canonical name is constructed by concating all tokens with hypens.
+
+<div class="example">
+	The following two examples are equal.
+
+	<pre class="lang-css">
+		@should not match ".boo";
+		@should not-match ".boo";
+	</pre>
+</div>
+
+Axes {#axes}
+============
+An axis defines a rule relative to the current component. It resembles a function as it takes a current component and provided string as parameters, and returns a boolean value meaning if the rule was met or not. An alternative name for an axis is a verb.
+
+Issue: Define other axes after a discussion.
+
+Match {#match-axis}
+-------------------
+A rule is met if if on every element of the current component, function Element.matches() defined in [[!dom]] with supplied string as its parameter return true.
+
+Issue: Expand and explain into more detail. Provide Examples.
+
+Not-match {#not-match-axis}
+-----------------------
+This axis return a negation of the match rule with same parameters.

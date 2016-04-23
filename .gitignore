@@ -1,0 +1,5 @@
+# Libraries
+node_modules
+
+# Generated files
+spec/*.html
