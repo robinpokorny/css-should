@@ -3,10 +3,13 @@
   "license": "MIT",
   "name": "at-should",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "standard"
   },
   "contributors": [
     "Robin Pokorny <me@robinpokorny.com> (http://robinpokorny.com)",
     "Martin Kristof (https://github.com/MartinKristof)"
-  ]
+  ],
+  "devDependencies": {
+    "standard": "^6.0.8"
+  }
 }
