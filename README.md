@@ -4,7 +4,10 @@
 
 The **@should** rule is a proposed spec for defining semantics relationships of the custom classnames vocabulary for documentation and testing. See the [spec draft](http://robinpokorny.github.io/at-should/).
 
-**Got a question?** [![Join the chat at https://gitter.im/robinpokorny/at-should](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/robinpokorny/at-should)
+[![Gitter](https://img.shields.io/gitter/room/robinpokorny/at-should.svg?style=flat-square&maxAge=2592000)](https://gitter.im/robinpokorny/at-should)
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg?style=flat-square&maxAge=2592000)](https://semaphoreci.com/robinpokorny/at-should)
+[![license](https://img.shields.io/npm/l/transform-props-with.svg?style=flat-square&maxAge=2592000)](LICENSE)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-lightgrey.svg?style=flat-square&maxAge=2592000)](http://standardjs.com/)
 
 # Contributing
 
