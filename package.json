@@ -10,6 +10,7 @@
     "Martin Kristof (https://github.com/MartinKristof)"
   ],
   "devDependencies": {
-    "standard": "^6.0.8"
+    "standard": "^6.0.8",
+    "lerna": "^1.1.2"
   }
 }
