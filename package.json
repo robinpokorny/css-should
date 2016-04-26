@@ -1,7 +1,7 @@
 {
   "private": true,
   "license": "MIT",
-  "name": "at-should",
+  "name": "css-should",
   "scripts": {
     "test": "standard"
   },

@@ -3,10 +3,10 @@ Title: CSS @should Rule
 Shortname: css-should-rule
 Level: 1
 Status: DREAM
-URL: http://robinpokorny.github.io/at-should
+URL: http://robinpokorny.github.io/css-should
 Editor: Robin Pokorný, Wimdu, http://robinpokorny.com/
 Abstract: This specification defines the ''@should'' rule, which allows an author to define tests of semantics of the custom classnames vocabulary for documentation and testing.
-Repository: robinpokorny/at-should
+Repository: robinpokorny/css-should
 Ignored Terms: SyntaxError
 Warning: Not Ready
 </pre>
@@ -122,5 +122,9 @@ parameter returns true.
 Issue: Expand and explain into more detail. Provide Examples.
 
 Not-match {#not-match-axis}
------------------------
+---------------------------
 This axis return a negation of the match rule with same parameter.
+
+Be-present {#match-axis}
+-------------------
+A rule is met if on every element of the current component,
