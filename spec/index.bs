@@ -123,8 +123,15 @@ Issue: Expand and explain into more detail. Provide Examples.
 
 Not-match {#not-match-axis}
 ---------------------------
-This axis return a negation of the match rule with same parameter.
+This axis returns a negation of the match rule with same parameter.
 
-Be-present {#match-axis}
--------------------
-A rule is met if on every element of the current component,
+Appear {#appear-axis}
+--------------------
+Checks that there exists at least one element of the current component
+on the page.
+
+Issue: Should number of occurrences be allowed to be specified?
+
+Not-appear {#not-appear-axis}
+-----------------------------
+This axis returns true if there is no element of the current component.
