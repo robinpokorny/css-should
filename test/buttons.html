@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .header { should: appear; }
+    .btn-primary { -x-should: match ".btn"; should: appear;}
+    .btn-success { -x-should: match ".btn"; -x-should: not-match "a"; }
+  </style>
+</head>
+<body>
+  <button type="button" class="btn btn-primary">Primary</button>
+  <a href="#" class="btn-success">Success</a>
+
+  <script type="text/javascript">
+    window._parsed = {
+      "type": "stylesheet",
+      "stylesheet": {
+        "rules": [
+          {
+            "type": "rule",
+            "selectors": [
+              ".header"
+            ],
+            "declarations": [
+              {
+                "type": "declaration",
+                "property": "should",
+                "value": "appear",
+                "position": {
+                  "start": {
+                    "line": 1,
+                    "column": 17
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 40
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "rule",
+            "selectors": [
+              ".btn-primary"
+            ],
+            "declarations": [
+              {
+                "type": "declaration",
+                "property": "-x-should",
+                "value": "match \".btn\"",
+                "position": {
+                  "start": {
+                    "line": 1,
+                    "column": 17
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 40
+                  }
+                }
+              },
+              {
+                "type": "declaration",
+                "property": "should",
+                "value": "appear",
+                "position": {
+                  "start": {
+                    "line": 1,
+                    "column": 17
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 40
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 42
+              }
+            }
+          },
+          {
+            "type": "rule",
+            "selectors": [
+              ".btn-success"
+            ],
+            "declarations": [
+              {
+                "type": "declaration",
+                "property": "-x-should",
+                "value": "match \".btn\"",
+                "position": {
+                  "start": {
+                    "line": 1,
+                    "column": 57
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 80
+                  }
+                }
+              },
+              {
+                "type": "declaration",
+                "property": "-x-should",
+                "value": "not-match \"a\"",
+                "position": {
+                  "start": {
+                    "line": 1,
+                    "column": 57
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 80
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 43
+              },
+              "end": {
+                "line": 1,
+                "column": 81
+              }
+            }
+          }
+        ],
+        "parsingErrors": []
+      }
+    }
+  </script>
+  <script src="tester.js"></script>
+</body>
+</html>
