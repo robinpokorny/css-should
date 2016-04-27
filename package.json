@@ -5,8 +5,8 @@
   "scripts": {
     "test": "standard"
   },
+  "author": "Robin Pokorny <me@robinpokorny.com> (http://robinpokorny.com)",
   "contributors": [
-    "Robin Pokorny <me@robinpokorny.com> (http://robinpokorny.com)",
     "Martin Kristof (https://github.com/MartinKristof)"
   ],
   "devDependencies": {
