@@ -2,7 +2,7 @@
   "name": "css-should",
   "version": "0.2.1",
   "description": "Define semantics of CSS classnames vocabulary",
-  "main": "index.js",
+  "main": "lib/index.js",
   "repository": "https://github.com/robinpokorny/css-should/tree/master/packages/css-should",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
