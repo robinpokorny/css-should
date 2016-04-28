@@ -10,6 +10,7 @@
   "author": "Robin Pokorny <me@robinpokorny.com> (http://robinpokorny.com)",
   "license": "MIT",
   "dependencies": {
-    "css": "^2.2.1"
+    "css": "^2.2.1",
+    "koa-compose": "^2.4.0"
   }
 }
