@@ -13,9 +13,9 @@ export default function (css, dom, plugins, options = {}) {
 
   const testList = extractTests(ast)
 
-  const runTests = compose(plugins.map(({ tester }) => tester))
+  const runTest = compose(plugins.map(({ tester }) => tester))
 
-  const result = testList.map((test) => runTests({ test, css, dom, options }))
+  const result = testList.map((test) => runTest({ test, css, dom, options }))
 
   return toTAP(result)
 }
