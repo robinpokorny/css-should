@@ -5,12 +5,16 @@
   "main": "lib/index.js",
   "repository": "https://github.com/robinpokorny/css-should/tree/master/packages/css-should",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "babel src -d lib"
   },
   "author": "Robin Pokorny <me@robinpokorny.com> (http://robinpokorny.com)",
   "license": "MIT",
   "dependencies": {
     "css": "^2.2.1",
     "koa-compose": "^2.4.0"
+  },
+  "devDependencies": {
+    "babel-cli": "*"
   }
 }

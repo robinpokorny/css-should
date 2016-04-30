@@ -2,4 +2,8 @@
 node_modules
 
 # Generated files
+lib
 spec/*.html
+
+# Debug files
+lerna-debug.log
