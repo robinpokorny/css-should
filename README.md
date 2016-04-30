@@ -13,6 +13,10 @@ The **@should** rule is a proposed spec for defining semantics relationships of 
 
 Contributing, discussion, and feedback is highly welcomed. The entry point for any question or idea should be the [chat](https://gitter.im/robinpokorny/css-should). Of course, you can create an [issue](https://github.com/robinpokorny/css-should/issues) here as well.
 
+```sh
+npm run lerna bootstrap
+```
+
 # License
 
 [![MIT](https://upload.wikimedia.org/wikipedia/commons/6/67/License_icon-mit-88x31.png)](LICENSE)

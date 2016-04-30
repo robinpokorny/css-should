@@ -3,8 +3,8 @@
   "license": "MIT",
   "name": "css-should",
   "scripts": {
-    "compile": "lerna run compile",
-    "test": "standard && npm run compile && mocha"
+    "lerna": "lerna",
+    "test": "standard && lerna run compile && mocha"
   },
   "author": "Robin Pokorny <me@robinpokorny.com> (http://robinpokorny.com)",
   "contributors": [
