@@ -1,8 +1,8 @@
 import { parser } from 'css'
 import compose from 'koa-compose'
 
-import extractTests from './extract-tests'
-import toTAP from './to-tap'
+const extractTests = () => {}
+const toTAP = () => {}
 
 export default function (css, dom, plugins, options = {}) {
   if (typeof css === 'string') {

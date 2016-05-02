@@ -4,12 +4,10 @@
   "name": "css-should",
   "scripts": {
     "lerna": "lerna",
-    "test": "standard && lerna run compile && mocha"
+    "pretest": "lerna run compile",
+    "test": "standard && mocha"
   },
   "author": "Robin Pokorny <me@robinpokorny.com> (http://robinpokorny.com)",
-  "contributors": [
-    "Martin Kristof (https://github.com/MartinKristof)"
-  ],
   "devDependencies": {
     "babel-cli": "^6.7.7",
     "babel-core": "^6.7.7",
