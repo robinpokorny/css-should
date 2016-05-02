@@ -1,6 +1,6 @@
 {
   "name": "css-should",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Define semantics of CSS classnames vocabulary",
   "main": "lib/index.js",
   "repository": "https://github.com/robinpokorny/css-should/tree/master/packages/css-should",
@@ -19,3 +19,4 @@
     "babel-cli": "*"
   }
 }
+
