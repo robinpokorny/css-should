@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## Unreleased - 2016-xx-xx
+### Plugins
+- Use pluginable middleware architecture
+- Add match plugin package
+
 ## 0.3.0 - 2016-05-02
 ### Implementation
 - Introduce multi repo architecture managed by kittens/lerna

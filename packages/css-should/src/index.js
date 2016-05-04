@@ -1,97 +1,35 @@
 import { parse } from 'css'
 import compose from 'koa-compose'
+import * as pluginMatch from 'css-should-plugin-match'
 
-const extractTests = (ctx, next) => {
-  return next().then(() => {
-    ctx.tests = ctx.css.rules
-      .filter((rule) => rule.type === 'rule')
-      .map((rule) => rule.declarations.filter(
-        (d) => d.property === 'should')
-      )
-      .reduce((p, a) => p.concat(a), [])
-  })
-}
+import pluck from './helpers/pluck'
+import testRunner from './helpers/test-runner'
 
-function parseShouldDeclaration (declaration) {
-  var re = /([a-z-]+)\s*("([^"]*)")?/
-  var match = declaration.value.match(re)
-
-  declaration.axis = match[1]
-  declaration.param = match[3]
-
-  return declaration
-}
-
-const parseShould = (ctx, next) => {
-  ctx.css.rules.forEach((rule) => rule.declarations
-    .filter((d) => d.property === 'should')
-    .map(parseShouldDeclaration)
-  )
-  return next()
-}
-
-const match = ({ test, fail, pass }, next) => {
-  const { elements, axis, param } = test
-  if (axis !== 'match') next()
-
-  pass(test)
-
-  const isPassing = elements.every((elem) => {
-    if (!elem.matches(param)) {
-      fail(test, new Error('Element', elem, ' does not match "' + param + '".'))
-      return false
-    }
-
-    return true
-  })
-
-  if (isPassing) {
-    pass(test)
-  }
-}
-
-const notHandled = ({ test, fail }) => {
-  fail(test, new Error('Unhandled test with "' + test.axis + '" axis.'))
-}
-
-const pluck = (property, arr) => arr
-  .map((obj) => obj[property])
-  .filter((x) => !!x)
+import * as extractTests from './middleware/extract-tests'
+import * as parseDeclarations from './middleware/parse-declarations'
+import * as notHandled from './middleware/not-handled'
 
 export default function (css, document, emit, options = {}) {
-  const { plugins = [] } = options
+  const { plugins = [], cssSource } = options
 
   if (typeof css === 'string') {
-    css = parse(css).stylesheet
+    css = parse(css, { source: cssSource }).stylesheet
   }
-
-  const ctx = { css, options, document }
-  const fail = (test, err) => {
-    test.passed = false
-    emit('fail', test, err)
-  }
-  const pass = (test) => {
-    test.passed = true
-    emit('pass', test)
-  }
-
-  const preprocessors = pluck('preprocess', plugins)
-  const tests = pluck('test', plugins)
-  const testRunner = compose([ ...tests, match, notHandled ])
 
   const middleware = [
     extractTests,
-    ...preprocessors,
-    parseShould
+    ...plugins,
+    parseDeclarations,
+    pluginMatch,
+    notHandled
   ]
 
-  return compose(middleware)(ctx)
-    .then(() => ctx.tests.map(
-      (test) => {
-        testRunner({test, fail, pass})
-        return test
-      }
-    ))
+  const preprocessors = compose(pluck('preprocess', middleware))
+  const testers = compose(pluck('test', middleware))
+  const ctx = { css, options, document }
+
+  return preprocessors(ctx)
+    .then(testRunner(ctx.tests, testers, emit))
     .then((results) => {
       emit('done')
       return results
