@@ -35,5 +35,19 @@ describe('"Parse declarations" middleware', () => {
       expect(declaration).to.have.property('axis', 'axis')
       expect(declaration).to.have.property('param', 'param')
     })
+
+    it('should recognise hyphenated axis', () => {
+      const declaration = parseDeclaration({ value: 'not-axis "param"' })
+
+      expect(declaration).to.have.property('axis', 'not-axis')
+      expect(declaration).to.have.property('param', 'param')
+    })
+
+    it('should recognise space-separated axis', () => {
+      const declaration = parseDeclaration({ value: 'not axis "param"' })
+
+      expect(declaration).to.have.property('axis', 'not-axis')
+      expect(declaration).to.have.property('param', 'param')
+    })
   })
 })

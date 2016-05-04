@@ -1,9 +1,9 @@
-const re = /([a-z-]+)\s*("([^"]*)")?/
+const re = /([a-z-\s]+[a-z-])(\s+"([^"]*)")?/
 
 export const parseDeclaration = (declaration) => {
   const match = declaration.value.match(re)
 
-  declaration.axis = match[1]
+  declaration.axis = match[1].trim().replace(/\s+/, '-')
   declaration.param = match[3]
 
   return declaration
