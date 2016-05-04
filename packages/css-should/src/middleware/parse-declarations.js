@@ -1,4 +1,4 @@
-const re = /([a-z-\s]+[a-z-])(\s+"([^"]*)")?/
+const re = /([a-z-\s]*[a-z-])(\s+"([^"]*)")?/
 
 export const parseDeclaration = (declaration) => {
   const match = declaration.value.match(re)
