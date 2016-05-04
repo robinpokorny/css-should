@@ -1,21 +1,27 @@
-import { parser } from 'css'
+import { parse } from 'css'
 import compose from 'koa-compose'
 
-const extractTests = () => {}
-const toTAP = () => {}
+const extractTests = (ctx, next) => {
+  return next().then(() => {
+    ctx.results = ctx.css.rules
+  })
+}
 
-export default function (css, dom, plugins, options = {}) {
+const pluck = (property, arr) => arr
+  .map((obj) => obj[property])
+  .filter((x) => !!x)
+
+export default function (css, document, plugins = [], options = {}) {
   if (typeof css === 'string') {
-    css = parser(css)
+    css = parse(css).stylesheet
   }
 
-  const ast = compose(plugins.map(({ preprocess }) => preprocess))({ css, options })
+  const ctx = { css, options, document }
 
-  const testList = extractTests(ast)
+  const processors = pluck('process', plugins)
+  // const testers = compose(pluck('test', plugins))
 
-  const runTest = compose(plugins.map(({ tester }) => tester))
+  const middleware = [extractTests, ...processors]
 
-  const result = testList.map((test) => runTest({ test, css, dom, options }))
-
-  return toTAP(result)
+  return compose(middleware)(ctx).then(() => ctx.results)
 }
