@@ -1,3 +1,5 @@
+export const name = 'css-should-plugin-match'
+
 export const test = ({ test, fail, pass }, next) => {
   const { elements, axis, param } = test
   if (axis !== 'match') return next()
