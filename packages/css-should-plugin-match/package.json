@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "repository": "https://github.com/robinpokorny/css-should/tree/master/packages/css-should-match",
   "scripts": {
-    "compile": "babel src -d lib",
+    "compile": "babel src -d lib -q",
     "prepublish": "npm run compile",
     "test": "echo \"Error: run test in repo root\" && exit 1"
   },
@@ -16,4 +16,3 @@
     "babel-cli": "*"
   }
 }
-
