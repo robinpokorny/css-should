@@ -50,7 +50,7 @@ describe('"Parse declarations" middleware', () => {
       expect(declaration).to.have.property('param', 'param')
     })
 
-    xit('should recognise and normalise whitespace-separated axis', () => {
+    it('should recognise and normalise whitespace-separated axis', () => {
       const declaration = parseDeclaration({ value: '  x     not     axis "param"' })
 
       expect(declaration).to.have.property('axis', 'x-not-axis')

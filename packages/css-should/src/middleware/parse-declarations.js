@@ -3,7 +3,7 @@ const re = /([a-z-\s]*[a-z-])(\s+"([^"]*)")?/
 export const parseDeclaration = (declaration) => {
   const match = declaration.value.match(re)
 
-  declaration.axis = match[1].trim().replace(/\s+/, '-')
+  declaration.axis = match[1].trim().replace(/\s+/g, '-')
   declaration.param = match[3]
 
   return declaration
